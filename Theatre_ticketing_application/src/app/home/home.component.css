@@ -1,0 +1,329 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap');
+header:before {
+   content: '';
+   display: inline-block;
+   vertical-align: middle;
+   height: 100%;
+}
+
+#nav-wrap ul, #nav-wrap li, #nav-wrap a {
+   margin: 0;
+   padding: 0;
+   border: none;
+   outline: none;
+}
+
+#nav-wrap {
+ font: 12px 'opensans-bold', sans-serif;
+ width: 100%;  /* vav width */
+ text-transform: uppercase;
+ letter-spacing: 2.5px;
+ margin: 0 auto;
+ z-index: 100;
+ position: fixed;
+ left: 0;
+ top: 0;
+ background-color: rgb(12, 12, 12);
+}
+
+ul#nav {
+   min-height: 48px;
+   width: auto;
+   text-align: center;
+}
+
+ul#nav li {
+   position: relative;
+   list-style: none;
+   height: 48px;
+   display: inline-block;
+}
+
+ul#nav li a {
+   display: inline-block;
+   padding: 8px 15px;
+   line-height: 32px;
+    text-decoration: none;
+   text-align: left;
+   color: #fff;
+}
+
+ul#nav li.current a { 
+    color: #F06000; 
+}
+#about {
+   background: white;
+   padding-top: 96px;
+   padding-bottom: 66px;
+   overflow: hidden;
+}
+
+#about a  { 
+    color: #fff; 
+}
+
+#about h2 {
+   font: 22px/30px 'opensans-bold', sans-serif;
+   color: #fff;
+   margin-bottom: 12px;
+}
+#about p {
+    line-height: 30px;
+    color: #7A7A7A;
+    font-weight: 300;
+    text-align: justify;
+}
+#about .profile-pic {
+    position: relative;
+    width: 200px;
+    height: auto;
+    border-radius: 20px;
+}
+#about .contact-details { 
+    width: 41.66667%; 
+}
+
+#about .main-col { 
+    padding-right: 5%; 
+}
+
+#resume {
+   background: #e1e5e9!important;
+   padding-top: 90px;
+   padding-bottom: 0;
+   overflow: hidden;
+}
+
+#resume h3 {
+   font: 25px/30px 'opensans-bold', sans-serif;
+}
+
+#resume { 
+    padding-top: 9px; 
+}
+#resume .main-col { 
+    padding-right: 10%; 
+}
+
+#resume .info {
+   color: rgb(255, 255, 255);
+   margin-bottom: 18px;
+   margin-top: 9px;
+}
+
+#resume .des {
+    line-height: 30px;
+    color: #aaa;
+    font-weight: 300;
+    text-align: justify;
+ }
+
+#resume .info span {
+   margin-right: 5px;
+   margin-left: 5px;
+}
+
+#resume .date {
+   font: 15px/24px 'opensans-regular', sans-serif;
+   margin-top: 6px;
+}
+
+.title_wrapper {
+    text-align: center;
+    position: relative;
+    height: 85px;
+    margin: 0 0 60px;
+}
+.title_wrapper strong {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    color: #6c757d!important;
+    font-size: 105px;
+    text-transform: uppercase;
+    font-weight: 700;
+    opacity: 0.3;
+    height: 75px;
+    line-height: 85px;
+}
+.title_wrapper h1 {
+    position: relative;
+    font-size: 45px;
+    margin: 0 0 0;
+    padding: 10px 0 0;
+    letter-spacing: 8px;
+}
+.title_wrapper h1 span {
+    display: block;
+    width: 100px;
+    height: 4px;
+    margin: 10px auto 0;
+    background-color: #F06000;
+}
+
+button#submit-btn {
+    background-color: #20c997;
+    display: inline-block;
+    border: none;
+    padding: 15px 30px;
+    color: #fff;
+    border-radius: 40px;
+}
+
+html, body, div, span,
+ h1, h2, h3, p, em, img, q,
+ b, i,
+ dl, dt, dd, ol, ul, li, tr, th, section {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+ }
+ 
+ section {
+    display: block;
+ }
+ 
+ * {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+ }
+ 
+ html {
+    font-size: 62.5%;
+    -webkit-font-smoothing: antialiased;
+ }
+ 
+ body {
+    background: #fff;
+    font-family: 'opensans-regular', sans-serif;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 30px;
+     color: #838C95;
+ }
+ 
+ h1, h2, h3 {
+    color: rgb(5, 5, 5);
+     font-family: 'opensans-bold', sans-serif;
+    font-weight: normal;
+ }
+ h1 a, h2 a, h3 a { 
+   font-weight: inherit; 
+}
+ h1 { 
+   font-size: 38px; 
+   line-height: 42px; 
+   margin-bottom: 12px; 
+   letter-spacing: -1px; }
+ h2 { 
+   font-size: 28px; 
+   line-height: 36px; 
+   margin-bottom: 6px; 
+}
+ h3 { 
+   font-size: 22px; 
+   line-height: 30px; 
+   margin-bottom: 12px; 
+}
+ 
+ em { font: 15px/30px 'opensans-italic', sans-serif; }
+ strong { font: 15px/30px 'opensans-bold', sans-serif; }
+ 
+ hr { border: solid #E3E3E3; border-width: 1px 0 0; clear: both; margin: 11px 0 30px; height: 0; }
+ 
+ 
+ img {
+    max-width: 100%;
+    height: auto;
+ }
+ 
+ .row {
+    width: 96%;
+    max-width: 1020px;
+    margin: 0 auto;
+ }
+
+ .ie .row { width: 1000px ; }
+ 
+ .narrow .row { max-width: 980px; }
+ 
+ .row .row { width: auto; max-width: none; margin: 0 -20px; }
+ 
+ .row:before,
+ .row:after {
+     content: " ";
+     display: table;
+ }
+ .row:after {
+     clear: both;
+ }
+ 
+ .column, .columns {
+    position: relative;
+    padding: 0 20px;
+    min-height: 1px;
+    float: left;
+ }
+ .column.centered, .columns.centered  {
+     float: none;
+     margin: 0 auto;
+ }
+
+ .row .nine        { width: 75%; }
+ .row .ten         { width: 83.33333%; }
+ .row .eleven      { width: 91.66667%; }
+ .row .twelve      { width: 100%; }
+
+ .card {
+    width: 300px; /* Adjust to your card size */
+    border: 1px solid #ccc;
+    overflow: hidden;
+    text-align: center;
+    color: black;
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+  }
+  
+  /* Create four equal columns that sits next to each other */
+  .column {
+    flex: 25%;
+    max-width: 25%;
+    padding: 0 4px;
+  }
+  
+  .column img {
+    margin-top: 8px;
+    vertical-align: middle;
+    width: 100%;
+  }
+  
+  /* Responsive layout - makes a two column-layout instead of four columns */
+  @media screen and (max-width: 800px) {
+    .column {
+      flex: 50%;
+      max-width: 50%;
+    }
+  }
+  
+  /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    .column {
+      flex: 100%;
+      max-width: 100%;
+    }
+  }
+
+#moviedes {
+    text-align: center;
+    color: black;
+}
