@@ -45,14 +45,14 @@ function verifytoken(req, res, next) {
   router.post('/login', async (req, res) => {
     try {
       const { email, password } = req.body;
-      const faculty = await userData.findOne({ email, password });
+      const customer = await userData.findOne({ email, password });
       if (email === 'admin@gmail.com' && password === 'admin@123') {
         const token = jwt.sign({ email, password }, 'secretKey');
 
           res.status(200).send({ message: 'Admin logged in Successful', token: token, role:'admin' })
           console.log('Admin logged in Successful')
         }
-      else if (faculty) {
+      else if (customer) {
         const token = jwt.sign({ email, password }, 'secretKey');
         res.status(200).json({ message: 'Customer login successful.', token: token, role:'user', user:email });
       } else {
