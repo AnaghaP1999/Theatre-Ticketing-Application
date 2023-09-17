@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
-import { HeaderComponent } from './header/header.component';
 import { RouterModule } from '@angular/router';
 import { LoginService } from './login.service';
 import { CustomerdashboardComponent } from './customerdashboard/customerdashboard.component';
@@ -21,7 +20,6 @@ import { TokeninterceptorService } from './tokeninterceptor.service';
     HomeComponent,
     LoginComponent,
     SignupComponent,
-    HeaderComponent,
     CustomerdashboardComponent,
     AdmindashboardComponent
   ],
