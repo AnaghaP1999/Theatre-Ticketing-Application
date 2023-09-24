@@ -1,0 +1,91 @@
+<div class="wrapper d-flex align-items-stretch">
+    <nav id="sidebar">
+        <div class="custom-menu">
+            <button type="button" id="sidebarCollapse" class="btn btn-primary">
+      <i class="fa fa-bars"></i>
+      <span class="sr-only">Toggle Menu</span>
+    </button>
+</div>
+      <h1><a [routerLink]="['/']" class="logo">Show WIth Us</a></h1>
+<ul class="list-unstyled components mb-5">
+  <li>
+      <a [routerLink]="['/my-dashboard']"><span class="fa fa-user mr-3"></span> Dashboard</a>
+  </li>
+  <li>
+    <a href="#"><span class="fa fa-sticky-note mr-3"></span> My Booking</a>
+  </li>
+  <li>
+    <a href="#"><span class="fas fa-star mr-3"></span> Rate </a>
+  </li>
+  <li>
+    <a ><span class="fas fa-sign-out-alt mr-3"></span> Logout</a>
+  </li>
+</ul>
+
+</nav>
+
+
+        <!-- Page Content  -->
+      <div id="content" class="p-4 p-md-5 pt-5">
+        <div id="booking" class="section">
+            <div class="section-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="booking-form">
+                            <form>
+                                <div class="row no-margin">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <span class="form-label">Movie</span>
+                                            <input class="form-control" type="text" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <span class="form-label">Date</span>
+                                            <input class="form-control" type="date" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row no-margin">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <span class="form-label">Tickets</span>
+                                            <input class="form-control" type="text" required>
+                                           
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <span class="form-label">Total Amount</span>
+                                            <input class="form-control" type="text" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <span class="form-label">Time</span>
+                                    <select class="form-control" required>
+                                        <option value="" selected hidden>Select Time Slot</option>
+                                        <option>Morning Show</option>
+                                        <option>Noon Show</option>
+                                        <option>Evening Show</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <span class="form-label">Email</span>
+                                    <input class="form-control" type="email" placeholder="Enter your email">
+                                </div>
+                                <!-- <div class="form-group">
+                                    <span class="form-label">Phone</span>
+                                    <input class="form-control" type="tel" placeholder="Enter your phone number">
+                                </div> -->
+                                <div class="form-btn">
+                                    <button class="submit-btn">Book Now</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		</div>

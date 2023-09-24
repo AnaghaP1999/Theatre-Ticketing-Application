@@ -13,6 +13,9 @@ import { AdmindashboardComponent } from './admindashboard/admindashboard.compone
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { TokeninterceptorService } from './tokeninterceptor.service';
+import { MoviepageComponent } from './moviepage/moviepage.component';
+import { BookticketsComponent } from './booktickets/booktickets.component';
+import { CustomerService } from './customer.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,9 @@ import { TokeninterceptorService } from './tokeninterceptor.service';
     LoginComponent,
     SignupComponent,
     CustomerdashboardComponent,
-    AdmindashboardComponent
+    AdmindashboardComponent,
+    MoviepageComponent,
+    BookticketsComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +35,7 @@ import { TokeninterceptorService } from './tokeninterceptor.service';
     HttpClientModule,
     FormsModule
   ],
-  providers: [LoginService, {
+  providers: [LoginService, CustomerService, {
     provide:HTTP_INTERCEPTORS,
     useClass:TokeninterceptorService,
     multi:true

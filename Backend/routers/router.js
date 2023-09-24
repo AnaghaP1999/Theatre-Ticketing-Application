@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const jwt=require('jsonwebtoken')
 const userData=require("../model/users")
+const movieData=require("../model/movies")
 
 router.use(express.json());
 router.use(express.urlencoded({extended:true}));
@@ -80,6 +81,33 @@ function verifytoken(req, res, next) {
     }
   });
 
+ // Get All movie list - Customer
+ router.get('/movielist',verifytoken, (req, res) => {
+  movieData.find()
+    .then((Movies) => {
+      res.json(Movies);
+    })
+    .catch((error) => {
+      console.error('Error retrieving Movies:', error);
+      res.status(500).send('Error retrieving Movies');
+    });
+});
 
+// get movie details
+router.get('/get-movie-details/:id',verifytoken, (req, res) => {
+  const id = req.params.id;
+
+  movieData.findById(id)
+    .then((data) => {
+      if (!data) {
+        return res.status(404).json({ error: 'Data not found' });
+      }
+      res.json(data);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json({ error: 'Error retrieving data' });
+    });
+});
 
 module.exports = router

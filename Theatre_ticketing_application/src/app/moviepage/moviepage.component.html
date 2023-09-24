@@ -1,0 +1,84 @@
+	
+		<div class="wrapper d-flex align-items-stretch">
+			<nav id="sidebar">
+				<div class="custom-menu">
+					<button type="button" id="sidebarCollapse" class="btn btn-primary">
+	          <i class="fa fa-bars"></i>
+	          <span class="sr-only">Toggle Menu</span>
+	        </button>
+        </div>
+	  		<h1><a [routerLink]="['/']" class="logo">Show WIth Us</a></h1>
+        <ul class="list-unstyled components mb-5">
+          <li>
+              <a [routerLink]="['/my-dashboard']"><span class="fa fa-user mr-3"></span> Dashboard</a>
+          </li>
+          <li>
+            <a href="#"><span class="fa fa-sticky-note mr-3"></span> My Booking</a>
+          </li>
+          <li>
+            <a href="#"><span class="fas fa-star mr-3"></span> Rate </a>
+          </li>
+          <li>
+            <a ><span class="fas fa-sign-out-alt mr-3"></span> Logout</a>
+          </li>
+        </ul>
+
+    	</nav>
+
+        <!-- Page Content  -->
+      <div id="content" class="p-4 p-md-5 pt-5">
+        
+<div class="movie-ticket">
+    <div class="container-fluid">
+      <!-- Item -->
+      <div class="ui-item">
+        <!-- Head -->
+        <div class="ui-head">
+          <!-- Background Image -->
+          <img src="assets/bg.jpg" alt="" class="img-responsive bg-img">
+          <!-- Transparent Background -->
+          <div class="ui-trans clearfix">
+            <!-- Image -->
+            <img src="assets/JW4.jpg" alt="" class="img-responsive">
+            <!-- Details -->
+            <div class="ui-details clearfix">
+              <!-- Movie Name -->
+              <h2><a href="#">{{ movieData.moviename }}</a></h2>
+              <!-- Labels -->
+              <a href="#" class="label">{{ movieData.category }}</a>
+              <a href="#" class="label">{{ movieData.language }}</a>
+              <a href="#" class="label">Action</a>
+              <a href="#" class="label">Thriller</a>
+              <!-- Paragraph -->
+              <p>{{ movieData.description }}</p>
+              <!-- Heading -->
+              <h4><span>Cast</span>:</h4>
+              <!-- Director Name -->
+              <h5><a href="#">{{ movieData.cast }}</a></h5>
+              <a [routerLink]="['/book-tickets']" class="ui-btn bg-blue"><i class="fa fa-ticket"></i> Buy Tickets</a>
+              <!-- Heading -->
+              <!-- <h4><span>Writers</span>:</h4> -->
+              <!-- Writers -->
+              <!-- <h5><a href="#"> Joss Whedon (screenplay), Zak Penn (story)</a></h5> -->
+              <!-- Heading -->
+              <!-- <h4><span>Stars</span>:</h4> -->
+              <!-- Stars -->
+              <!-- <h5><a href="#">Slorm Mckency. ,</a> <a href="#">Maring lawyent ,</a> <a href="#">Lowin cleanting</a></h5> -->
+            </div>
+          </div>
+        </div>
+          <!-- Review -->
+          <div class="ui-review">
+            <!-- Heading -->
+            <h3>Reviews</h3>
+            <!-- Paragraph -->
+            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+            <!-- Buttons -->
+            <!-- <a href="#" class="ui-btn bg-red"><i class="fa fa-ticket"></i> Buy Tickets</a>
+            <a href="#" class="ui-btn bg-green"><i class="fa fa-dot-circle-o"></i> Buy DVDs</a> -->
+          </div>
+        </div>  
+      </div>
+  </div>      
+      </div>
+		</div>
