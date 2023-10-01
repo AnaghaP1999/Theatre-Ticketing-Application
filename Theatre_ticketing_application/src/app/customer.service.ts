@@ -16,7 +16,7 @@ export class CustomerService {
   }
 
    //  get movie details by id API - Customer
-   getDataById(id: string): Observable<any> {
+  getDataById(id: string): Observable<any> {
     return this.http.get<any>(`http://localhost:3000/api/get-movie-details/${id}`);
   }
 }

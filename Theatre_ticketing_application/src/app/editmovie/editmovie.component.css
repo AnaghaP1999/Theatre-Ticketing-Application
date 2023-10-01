@@ -967,4 +967,12 @@ nav {
     .btn.btn-primary:hover, .btn.btn-primary:focus {
       background: #2f89fc !important;
       border-color: #2f89fc !important; }
+
+
+      .btn.btn-danger {
+        background: red;
+        border-color: red; }
+        .btn.btn-primary:hover, .btn.btn-primary:focus {
+          background: red !important;
+          border-color: red !important; }
   

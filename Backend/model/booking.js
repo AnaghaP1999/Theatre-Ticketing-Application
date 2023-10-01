@@ -21,5 +21,5 @@ const Schema = mongoose.Schema({
     }
 });
 
-const bookingData = mongoose.model('movies',Schema);
+const bookingData = mongoose.model('booking',Schema);
 module.exports = bookingData;

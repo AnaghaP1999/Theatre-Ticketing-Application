@@ -16,6 +16,8 @@ import { TokeninterceptorService } from './tokeninterceptor.service';
 import { MoviepageComponent } from './moviepage/moviepage.component';
 import { BookticketsComponent } from './booktickets/booktickets.component';
 import { CustomerService } from './customer.service';
+import { AddmovieComponent } from './addmovie/addmovie.component';
+import { EditmovieComponent } from './editmovie/editmovie.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { CustomerService } from './customer.service';
     CustomerdashboardComponent,
     AdmindashboardComponent,
     MoviepageComponent,
-    BookticketsComponent
+    BookticketsComponent,
+    AddmovieComponent,
+    EditmovieComponent
   ],
   imports: [
     BrowserModule,

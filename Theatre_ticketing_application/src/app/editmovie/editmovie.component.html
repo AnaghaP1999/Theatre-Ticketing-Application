@@ -11,12 +11,12 @@
   <li>
       <a [routerLink]="['/my-dashboard']"><span class="fa fa-user mr-3"></span> Dashboard</a>
   </li>
-  <li>
+  <!-- <li>
     <a href="#"><span class="fa fa-sticky-note mr-3"></span> My Booking</a>
   </li>
   <li>
     <a href="#"><span class="fas fa-star mr-3"></span> Rate </a>
-  </li>
+  </li> -->
   <li>
     <a ><span class="fas fa-sign-out-alt mr-3"></span> Logout</a>
   </li>
@@ -31,19 +31,19 @@
             <div class="wrapper wrapper--w680">
                 <div class="card card-4">
                     <div class="card-body">
-                        <h2 class="title">Book Tickets</h2>
-                        <form method="POST">
+                        <h2 class="title">Add Movies</h2>
+                        <form (ngSubmit)="updateMovie()">
                             <div class="row row-space">
                                 <div class="col-2">
                                     <div class="input-group">
                                         Movie
-                                        <input class="input--style-4" type="text" placeholder="Movie Name" name="first_name">
+                                        <input class="input--style-4" type="text" placeholder="Movie Name" name="moviename" [(ngModel)]="movieData.moviename">
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="input-group">
-                                        Number of Ticket
-                                        <input class="input--style-4" type="text" placeholder="Enter Number of tickets" name="last_name">
+                                        Number of Seats
+                                        <input class="input--style-4" type="text" placeholder="Enter Number of Seats" name="seats" [(ngModel)]="movieData.seats">
                                     </div>
                                 </div>
                             </div>
@@ -51,28 +51,45 @@
                                 <div class="col-2">
                                     <div class="input-group">                           
                                         <div class="input-group-icon">
-                                            Show Date<input type="date" name="birthday">
+                                            Category<input class="input--style-4" type="text" placeholder="Enter the Movie Category" name="category" [(ngModel)]="movieData.category">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="input-group">
-                                        Amount<input class="input--style-4" type="text" placeholder="Total Amount" name="amount">
+                                        Language<input class="input--style-4" type="text" placeholder="Movie Language" name="language" [(ngModel)]="movieData.language">
                                     </div>
                                 </div>
                             </div>
                             <div class="row row-space">
-                                <div class="col-2">
+                                <div class="col-2">  Cast
                                     <div class="input-group">
-                                       Email
-                                        <input class="input--style-4" type="email" placeholder="Enter your MailID" name="email">
+                                        <textarea class="input--style-4" placeholder="Cast Details" name="cast" [(ngModel)]="movieData.cast"></textarea>
+                                    </div>
+                                </div>  
+                                <div class="col-2">  Movie Description
+                                    <div class="input-group">
+                                        <textarea class="input--style-4" placeholder="Movie Description" name="description" [(ngModel)]="movieData.description"></textarea>
+                                    </div>
+                                </div>  
+                            </div>
+                            <div class="row row-space">
+                                <div class="col-2">
+                                    <div class="input-group">                           
+                                        <div class="input-group-icon">
+                                            Ticket Rate<input class="input--style-4" type="text" placeholder="Ticket Rate" name="ticket_rate" [(ngModel)]="movieData.ticket_rate">
+                                        </div>
                                     </div>
                                 </div>
-                               
+                                <div class="col-2">
+                                    <div class="input-group">
+                                        Upload Image<input class="btn btn-lg" type="file" placeholder="Upload Image" name="image">
+                                    </div>
+                                </div>
                             </div>
-                           
                             <div class="p-t-15">
-                                <button class="btn btn-primary btn-lg" type="submit"> Book Now </button>
+                                <button class="btn btn-primary btn-lg" type="submit"> Update Movie </button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <button [routerLink]="['/admin-dashboard']" class="btn btn-danger btn-lg" type="button"> Cancel </button>
                             </div>
                         </form>
                     </div>
