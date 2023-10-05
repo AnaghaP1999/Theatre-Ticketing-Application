@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../login.service';
 import { AdminService } from '../admin.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-addmovie',
@@ -10,16 +11,6 @@ import { AdminService } from '../admin.service';
 })
 export class AddmovieComponent implements OnInit {
 
-  // movieForm = {
-  //   moviename : '',
-  //   image : '',
-  //   language : '',
-  //   category : '',
-  //   cast : '',
-  //   description : '',
-  //   ticket_rate : '',
-  //   seats : ''
-  // };
 
   movieForm: any = {}; // Define your movie form model
   selectedImage: File | null = null; // Variable to store the selected image file
@@ -29,29 +20,31 @@ export class AddmovieComponent implements OnInit {
 
   ngOnInit() {}
 
-  addMovie() {
-    const formData = new FormData();
-    formData.append('moviename', this.movieForm.moviename);
-    formData.append('seats', this.movieForm.seats);
-    formData.append('category', this.movieForm.category);
-    formData.append('language', this.movieForm.language);
-    formData.append('cast', this.movieForm.cast);
-    formData.append('description', this.movieForm.description);
-    formData.append('ticket_rate', this.movieForm.ticket_rate);
-
-    if (this.selectedImage) {
-      formData.append('image', this.selectedImage, this.selectedImage.name);
+  addMovie(form: NgForm) {
+    if (form.valid && this.selectedImage) {
+      const formData = new FormData();
+      formData.append('moviename', form.value.moviename);
+      formData.append('category', form.value.category);
+      formData.append('language', form.value.language);
+      formData.append('cast', form.value.cast);
+      formData.append('description', form.value.description);
+      formData.append('ticket_rate', form.value.ticket_rate);
+      formData.append('seats', form.value.seats);
+      formData.append('image', this.selectedImage);
+  
+      this.adminservice.addMovie(formData).subscribe(
+        (response) => {
+          alert('Movie added successfully');
+          console.log('Movie added successfully:', response);
+          this.router.navigate(['/admin-dashboard']);
+          // Reset the form
+          form.reset();
+        },
+        (error) => {
+          console.error('Error adding movie:', error);
+        }
+      );
     }
-
-    this.adminservice.addMovie(formData).subscribe(
-      (res) => {
-        alert('Movie added successfully');
-        this.router.navigate(['/admin-dashboard']);
-      },
-      (error) => {
-        console.error('Error adding movie:', error);
-      }
-    );
   }
 
   onFileSelected(event: any) {

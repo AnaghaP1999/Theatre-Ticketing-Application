@@ -11,12 +11,16 @@ export class CustomerService {
   constructor(private http:HttpClient, private router:Router) { }
 
   //  get all movies API - Customer
-  getMovies() {
-    return this.http.get(`http://localhost:3000/api/movielist`);
+  getMovies(): Observable<any[]> {
+    return this.http.get<any[]>(`http://localhost:3000/api/movielist`);
   }
 
    //  get movie details by id API - Customer
-  getDataById(id: string): Observable<any> {
+  getDataById(id: any): Observable<any> {
     return this.http.get<any>(`http://localhost:3000/api/get-movie-details/${id}`);
+  }
+
+  bookTicket(bookingData: any): Observable<any> {
+    return this.http.post(`http://localhost:3000/api/bookTicket`, bookingData);
   }
 }

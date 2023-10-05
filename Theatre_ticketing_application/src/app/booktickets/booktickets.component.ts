@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { CustomerService } from '../customer.service';
 
 @Component({
   selector: 'app-booktickets',
@@ -7,12 +9,24 @@ import { Component } from '@angular/core';
 })
 export class BookticketsComponent {
 
-  bookingForm={
+  booking = {
     moviename:'',
     date:'',
     tickets:'',
     amount:'',
-    time:'',
+    // time:'',
     email: ''
+  }
+  constructor(private http: HttpClient, private customerservice: CustomerService) {}
+
+  bookTicket() {
+    this.customerservice.bookTicket(this.booking).subscribe(
+      (response) => {
+        console.log('Booking response:', response);
+      },
+      (error) => {
+        console.error('Booking error:', error);
+      }
+    );
   }
 }

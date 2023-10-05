@@ -32,18 +32,18 @@
                 <div class="card card-4">
                     <div class="card-body">
                         <h2 class="title">Book Tickets</h2>
-                        <form method="POST">
+                        <form (ngSubmit)="bookTicket()">
                             <div class="row row-space">
                                 <div class="col-2">
                                     <div class="input-group">
                                         Movie
-                                        <input class="input--style-4" type="text" placeholder="Movie Name" name="first_name">
+                                        <input class="input--style-4" type="text" placeholder="Movie Name" name="moviename" [(ngModel)]="booking.moviename">
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="input-group">
                                         Number of Ticket
-                                        <input class="input--style-4" type="text" placeholder="Enter Number of tickets" name="last_name">
+                                        <input class="input--style-4" type="text" placeholder="Enter Number of tickets" name="tickets" [(ngModel)]="booking.tickets">
                                     </div>
                                 </div>
                             </div>
@@ -51,13 +51,13 @@
                                 <div class="col-2">
                                     <div class="input-group">                           
                                         <div class="input-group-icon">
-                                            Show Date<input type="date" name="birthday">
+                                            Show Date<input type="date" name="date" [(ngModel)]="booking.date">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="input-group">
-                                        Amount<input class="input--style-4" type="text" placeholder="Total Amount" name="amount">
+                                        Amount<input class="input--style-4" type="text" placeholder="Total Amount" name="amount" [(ngModel)]="booking.amount">
                                     </div>
                                 </div>
                             </div>
@@ -65,7 +65,7 @@
                                 <div class="col-2">
                                     <div class="input-group">
                                        Email
-                                        <input class="input--style-4" type="email" placeholder="Enter your MailID" name="email">
+                                        <input class="input--style-4" type="email" placeholder="Enter your MailID" name="email" [(ngModel)]="booking.email">
                                     </div>
                                 </div>
                                

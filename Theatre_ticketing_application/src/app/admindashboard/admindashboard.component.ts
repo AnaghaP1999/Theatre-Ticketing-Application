@@ -17,24 +17,31 @@ export class AdmindashboardComponent implements OnInit {
   constructor(private router: Router, private service: LoginService, private adminservice: AdminService) {}
 
   ngOnInit() {
-    this.fetchMovies();
-    // this.adminservice.getMovies().subscribe((data=>{
-    //   this.items=data;
-    // }))
-  }
-  fetchMovies() {
-    this.adminservice.getMovie().subscribe(
-      (data) => {
-        // Update the image URLs to point to the backend server
-        this.items = data.map((movie:any) => ({
+    this.adminservice.getMovies().subscribe((res:any[])=>{
+      this.items = res.map(movie => {
+        const imageBase64 = this.arrayBufferToBase64(movie.image.data.data);
+        return {
           ...movie,
-          image: `http://localhost:3000${movie.image}`,
-        }));
-      },
-      (error) => {
-        console.error('Error fetching movies:', error);
-      }
-    );
+          image: `data:${movie.image.contentType};base64,${imageBase64}`
+        };
+      });
+    },
+    (error)=>{
+      console.error(`Error getting data:`,error)
+    }
+    )
+  }
+
+  arrayBufferToBase64(buffer: ArrayBuffer) {
+    const binaryArray = new Uint8Array(buffer);
+    let binaryString = '';
+  
+    for (let i = 0; i < binaryArray.length; i++) {
+      binaryString += String.fromCharCode(binaryArray[i]);
+    }
+  
+    const base64String = btoa(binaryString);
+    return base64String;
   }
 
   // delete a movie - Admin
