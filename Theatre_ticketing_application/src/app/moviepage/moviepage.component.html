@@ -39,7 +39,7 @@
           <!-- Transparent Background -->
           <div class="ui-trans clearfix">
             <!-- Image -->
-            <img src="assets/JW4.jpg" alt="" class="img-responsive">
+            <img [src]="SelectedImage" alt="{{ movieData.moviename }}" class="img-responsive">
             <!-- Details -->
             <div class="ui-details clearfix">
               <!-- Movie Name -->
@@ -47,15 +47,15 @@
               <!-- Labels -->
               <a href="#" class="label">{{ movieData.category }}</a>
               <a href="#" class="label">{{ movieData.language }}</a>
-              <a href="#" class="label">Action</a>
-              <a href="#" class="label">Thriller</a>
+              <!-- <a href="#" class="label">Action</a> -->
+              <!-- <a href="#" class="label">Thriller</a> -->
               <!-- Paragraph -->
               <p>{{ movieData.description }}</p>
               <!-- Heading -->
               <h4><span>Cast</span>:</h4>
               <!-- Director Name -->
               <h5><a href="#">{{ movieData.cast }}</a></h5>
-              <a [routerLink]="['/book-tickets']" class="ui-btn bg-blue"><i class="fa fa-ticket"></i> Buy Tickets</a>
+              <a [routerLink]="['/book-tickets',movieData._id]" class="ui-btn bg-blue"><i class="fa fa-ticket"></i> Buy Tickets</a>
               <!-- Heading -->
               <!-- <h4><span>Writers</span>:</h4> -->
               <!-- Writers -->

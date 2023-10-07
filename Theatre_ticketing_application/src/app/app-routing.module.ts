@@ -16,7 +16,7 @@ const routes: Routes = [{path:'',component:HomeComponent},
 {path:'admin-dashboard',component:AdmindashboardComponent},
 {path:'my-dashboard',component:CustomerdashboardComponent},
 {path:'movie-details/:id',component:MoviepageComponent},
-{path:'book-tickets',component:BookticketsComponent},
+{path:'book-tickets/:id',component:BookticketsComponent},
 {path:'add-movie',component:AddmovieComponent},
 {path:'edit-movie/:id',component:EditmovieComponent}];
 

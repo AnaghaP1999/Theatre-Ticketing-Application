@@ -32,18 +32,18 @@
                 <div class="card card-4">
                     <div class="card-body">
                         <h2 class="title">Add Movies</h2>
-                        <form (ngSubmit)="addMovie()">
+                        <form (ngSubmit)="addMovie(movieForm)" #movieForm="ngForm" enctype="multipart/form-data">
                             <div class="row row-space">
                                 <div class="col-2">
                                     <div class="input-group">
                                         Movie
-                                        <input class="input--style-4" type="text" placeholder="Movie Name" name="moviename" [(ngModel)]="movieForm.moviename">
+                                        <input class="input--style-4" type="text" placeholder="Movie Name" name="moviename" ngModel>
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="input-group">
                                         Number of Seats
-                                        <input class="input--style-4" type="text" placeholder="Enter Number of Seats" name="seats" [(ngModel)]="movieForm.seats">
+                                        <input class="input--style-4" type="text" placeholder="Enter Number of Seats" name="seats" ngModel>
                                     </div>
                                 </div>
                             </div>
@@ -51,25 +51,25 @@
                                 <div class="col-2">
                                     <div class="input-group">                           
                                         <div class="input-group-icon">
-                                            Category<input class="input--style-4" type="text" placeholder="Enter the Movie Category" name="category" [(ngModel)]="movieForm.category">
+                                            Category<input class="input--style-4" type="text" placeholder="Enter the Movie Category" name="category" ngModel>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="input-group">
-                                        Language<input class="input--style-4" type="text" placeholder="Movie Language" name="language" [(ngModel)]="movieForm.language">
+                                        Language<input class="input--style-4" type="text" placeholder="Movie Language" name="language" ngModel>
                                     </div>
                                 </div>
                             </div>
                             <div class="row row-space">
                                 <div class="col-2">  Cast
                                     <div class="input-group">
-                                        <textarea class="input--style-4" placeholder="Cast Details" name="cast" [(ngModel)]="movieForm.cast"></textarea>
+                                        <textarea class="input--style-4" placeholder="Cast Details" name="cast" ngModel></textarea>
                                     </div>
                                 </div>  
                                 <div class="col-2">  Movie Description
                                     <div class="input-group">
-                                        <textarea class="input--style-4" placeholder="Movie Description" name="description" [(ngModel)]="movieForm.description"></textarea>
+                                        <textarea class="input--style-4" placeholder="Movie Description" name="description" ngModel></textarea>
                                     </div>
                                 </div>  
                             </div>
@@ -77,13 +77,13 @@
                                 <div class="col-2">
                                     <div class="input-group">                           
                                         <div class="input-group-icon">
-                                            Ticket Rate<input class="input--style-4" type="text" placeholder="Ticket Rate" name="ticket_rate" [(ngModel)]="movieForm.ticket_rate">
+                                            Ticket Rate<input class="input--style-4" type="text" placeholder="Ticket Rate" name="ticket_rate" ngModel>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="input-group">
-                                        Upload Image<input class="btn btn-lg" type="file" placeholder="Upload Image" name="image" [(ngModel)]="movieForm.image" (change)="onFileSelected($event)">
+                                        Upload Image<input class="btn btn-lg" type="file" placeholder="Upload Image" name="image" accept="image/*" ngModel (change)="onFileSelected($event)">
                                         <img [src]="url" height="200">
                                     </div>
                                 </div>

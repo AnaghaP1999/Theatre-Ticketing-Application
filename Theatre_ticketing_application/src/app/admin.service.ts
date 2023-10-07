@@ -13,8 +13,8 @@ export class AdminService {
   constructor(private http:HttpClient, private router:Router) { }
 
   //  get all movies API - Admin
-  getMovies() {
-    return this.http.get(`http://localhost:3000/api/movielist`);
+  getMovies(): Observable<any[]> {
+    return this.http.get<any[]>(`http://localhost:3000/api/movielist`);
   }
 
   getDataById(id: string): Observable<any> {
@@ -34,18 +34,6 @@ export class AdminService {
   //  delete movie API - Admin
   deleteMovie(id: string): Observable<any> {
     return this.http.delete<any>(`http://localhost:3000/api/delete-movie/${id}`);
-  }
-
-  getMovie(): Observable<any[]> {
-    return this.http.get<any[]>('http://localhost:3000/api/movielist').pipe(
-      map((movies) => {
-        // Map each movie to update the image URL
-        return movies.map((movie) => ({
-          ...movie,
-          image: `${movie.image}`, // Prepend the server URL once
-        }));
-      })
-    );
   }
 
 }

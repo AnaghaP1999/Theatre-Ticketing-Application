@@ -13,13 +13,13 @@ const Schema = mongoose.Schema({
      amount:{
         type:String, required: true                                                       
     },
-    time:{
-        type:String, required: true                                                       
-    },
+    // time:{
+    //     type:String, required: true                                                       
+    // },
     email:{
         type:String, required: true                                                       
     }
 });
 
-const bookingData = mongoose.model('booking',Schema);
+const bookingData = mongoose.model('bookings',Schema);
 module.exports = bookingData;

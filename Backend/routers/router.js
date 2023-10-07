@@ -3,6 +3,8 @@ const router = express.Router();
 const jwt=require('jsonwebtoken');
 const multer = require('multer');
 const path = require('path');
+const bodyParser = require('body-parser');
+const nodemailer = require('nodemailer');
 const userData=require("../model/users");
 const movieData=require("../model/movies");
 const bookingData=require("../model/booking");
@@ -10,21 +12,9 @@ const bookingData=require("../model/booking");
 router.use(express.json());
 router.use(express.urlencoded({extended:true}));
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'uploads/'); // Destination directory for uploaded files
-  },
-  filename: (req, file, cb) => {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
-    const extname = path.extname(file.originalname);
-    cb(null, uniqueSuffix + extname); // Use a unique filename with the original file extension
-  },
-});
+const storage = multer.memoryStorage();
 
-// Create a multer instance with the specified storage configuration
-const upload = multer({ storage: storage });
-// Serve the 'uploads' directory as a static directory
-router.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+const upload=multer({storage:storage})
 
 // function to verify token
 function verifytoken(req, res, next) {
@@ -101,15 +91,13 @@ function verifytoken(req, res, next) {
   });
 
  // Get All movie list - Customer
- router.get('/movielist',verifytoken, (req, res) => {
-  movieData.find()
-    .then((Movies) => {
-      res.json(Movies);
-    })
-    .catch((error) => {
-      console.error('Error retrieving Movies:', error);
-      res.status(500).send('Error retrieving Movies');
-    });
+ router.get('/movielist',verifytoken, async (req, res) => {
+  try{
+    const movies=await movieData.find();
+    res.status(200).json(movies);
+  }catch(err){
+      res.status(500).json({error:'Failed to fetch image'});
+  }
 });
 
 // get movie details
@@ -132,19 +120,20 @@ router.get('/get-movie-details/:id',verifytoken, (req, res) => {
 // add movie details - Admin
 router.post('/addmovie', verifytoken, upload.single('image'), async (req, res) => {
   try {
-    const item = req.body;
+    const {
+      moviename, language, category, cast, description, ticket_rate, seats
+    } = req.body;
 
-    if (!req.file) {
-      return res.status(400).json('No file was uploaded.');
-    }
-
-    const imagePath = `/uploads/${req.file.filename}`;
-    item.image = imagePath; // Save the image filename in the 'image' field of your movie schema
-
-    const newMovie = new movieData(item);
+    const movie = new movieData({
+      moviename, language, category, cast, description, ticket_rate, seats,
+      image : {
+        data : Buffer.from(req.file.buffer),
+        contentType : req.file.mimetype
+      }
+    });
 
     // Save the movie data to the database
-    await newMovie.save();
+    await movie.save();
 
     res.status(200).json('Movie Added');
     console.log('Movie Added');
@@ -188,4 +177,48 @@ router.delete('/delete-movie/:id',verifytoken, (req, res) => {
     });
 });
 
+// API Endpoint to Book a Ticket
+router.post('/bookTicket',verifytoken, (req, res) => {
+  const { moviename, date, tickets, amount, email } = req.body;
+
+  // Save booking to MongoDB
+  const newBooking = new bookingData({ moviename, date, tickets, amount, email });
+  newBooking.save()
+  .then(() => {
+    // Send confirmation email
+    sendConfirmationEmail(email, tickets);
+    res.status(200).send('Ticket booked successfully.');
+  })
+  .catch((err) => {
+    console.error(err);
+    res.status(500).send('Error booking ticket.');
+  });
+});
+
+// Email Sending Function
+const sendConfirmationEmail = (email, tickets) => {
+  const transporter = nodemailer.createTransport({
+    service: 'Gmail',
+    auth: {
+      user: 'anaghatcr1999@gmail.com',
+      pass: 'lprjqhhivxorbxuw',
+    },
+  });
+
+  const mailOptions = {
+    from: 'anaghatcr1999@gmail.com',
+    to: email,
+    subject: 'Ticket Booking Confirmation',
+    text: `Your ticket has been booked. Seat Number: ${tickets}`,
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log('Error sending email:', error);
+    } else {
+      console.log('Email sent:', info.response);
+    }
+  });
+
+}
 module.exports = router

@@ -4,10 +4,6 @@ const Schema = mongoose.Schema({
     moviename: { 
         type: String, required: true 
     },
-    image: { 
-        type: String
-        // required: true 
-    },
     language:{
         type:String, required: true                                                       
      },
@@ -25,6 +21,11 @@ const Schema = mongoose.Schema({
     },
     seats:{
         type:Number, required: true                                                       
+    },
+    image: { 
+        data: Buffer,
+        contentType : String
+        // required: true 
     }
 });
 

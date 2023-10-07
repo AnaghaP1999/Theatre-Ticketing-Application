@@ -32,32 +32,9 @@
         <section>
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-6 col-lg-3 mb-2-6">
-                        <div class="card-wrapper mb-4">
-                            <div class="card-img"><img src="assets/RDX.jpg" alt="..."></div>
-                            <div class="card-body">
-                                <div>
-                                    <a [routerLink]="['/movie-details/650dd884aa6c5aa8ee2a0129']"><i class="bg-white p-3 rounded-circle ti-shopping-cart font-weight-600"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-center">
-                            <h4 class="h5 mb-2"><a href="#" class="text-secondary">RDX</a></h4>
-                            <h6>U/A</h6>
-                            <h6>Malayalam</h6>
-                            <div class="product-rating mb-2">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star mr-0"></i>
-                            </div>
-                            
-                        </div>
-                    </div>
                     <div class="col-sm-6 col-lg-3 mb-2-6" *ngFor="let item of items; let i = index">
                         <div class="card-wrapper mb-4">
-                            <div class="card-img"><img src="assets/JW4.jpg" alt="..."></div>
+                            <div class="card-img"><img [src]="item.image" alt="{{ item.moviename }}"></div>
                             <div class="card-body">
                                 <div>
                                     <a [routerLink]="['/movie-details',item._id]"><i class="bg-white p-3 rounded-circle ti-shopping-cart font-weight-600"></i></a>
@@ -66,154 +43,16 @@
                         </div>
                         <div class="text-center">
                             <h4 class="h5 mb-2"><a href="#" class="text-secondary">{{ item.moviename }}</a></h4>
-                            <h6>U/A</h6>
-                            <h6>English</h6>
-                            <div class="product-rating mb-2">
+                            <h6>{{ item.category }}</h6>
+                            <h6>{{ item.language }}</h6>
+                            <!-- <div class="product-rating mb-2">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star mr-0"></i>
-                            </div>
+                            </div> -->
                            
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-3 mb-2-6">
-                        <div class="card-wrapper mb-4">
-                            <div class="card-img"><img src="assets/kushi.jpg" alt="..."></div>
-                            <div class="card-body">
-                                <div>
-                                    <a [routerLink]="['/movie-details/650dd884aa6c5aa8ee2a0129']"><i class="bg-white p-3 rounded-circle ti-shopping-cart font-weight-600"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-center">
-                            <h4 class="h5 mb-2"><a href="#" class="text-secondary">Kushi</a></h4>
-                            <h6>U/A</h6>
-                            <h6>Telugu</h6>
-                            <div class="product-rating mb-2">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star mr-0"></i>
-                            </div>
-                    
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-3 mb-2-6">
-                        <div class="card-wrapper mb-4">
-                            <div class="card-img"><img src="assets/Jawan-1.jpg" alt="..."></div>
-                            <div class="card-body">
-                                <div>
-                                    <a [routerLink]="['/movie-details/650dd884aa6c5aa8ee2a0129']"><i class="bg-white p-3 rounded-circle ti-shopping-cart font-weight-600"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-center">
-                            <h4 class="h5 mb-2"><a href="#" class="text-secondary">Jawan</a></h4>
-                            <h6>U/A</h6>
-                            <h6>Hindi</h6>
-                            <div class="product-rating mb-2">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star mr-0"></i>
-                            </div>
-                     
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-3 mb-2-6 mb-lg-0">
-                        <div class="card-wrapper mb-4">
-                            <div class="card-img"><img src="assets/barbie.jpg" alt="..."></div>
-                            <div class="card-body">
-                                <div>
-                                    <a [routerLink]="['/movie-details/650dd884aa6c5aa8ee2a0129']"><i class="bg-white p-3 rounded-circle ti-shopping-cart font-weight-600"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-center">
-                            <h4 class="h5 mb-2"><a href="#" class="text-secondary">Barbie</a></h4>
-                            <h6>U/A</h6>
-                            <h6>English</h6>
-                            <div class="product-rating mb-2">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star mr-0"></i>
-                            </div>
-                        
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-3 mb-2-6 mb-lg-0">
-                        <div class="card-wrapper mb-4">
-                            <div class="card-img"><img src="assets/jailer.jpg" alt="..."></div>
-                            <div class="card-body">
-                                <div>
-                                    <a [routerLink]="['/movie-details/650dd884aa6c5aa8ee2a0129']"><i class="bg-white p-3 rounded-circle ti-shopping-cart font-weight-600"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-center">
-                            <h4 class="h5 mb-2"><a href="#" class="text-secondary">Jailer</a></h4>
-                            <h6>U/A</h6>
-                            <h6>Tamil</h6>
-                            <div class="product-rating mb-2">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star mr-0"></i>
-                            </div>
-                        
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-3 mb-2-6 mb-sm-0">
-                        <div class="card-wrapper mb-4">
-                            <div class="card-img"><img src="assets/drishyam.jpg" alt="..."></div>
-                            <div class="card-body">
-                                <div>
-                                    <a [routerLink]="['/movie-details/650dd884aa6c5aa8ee2a0129']"><i class="bg-white p-3 rounded-circle ti-shopping-cart font-weight-600"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-center">
-                            <h4 class="h5 mb-2"><a href="#" class="text-secondary">Dhrishyam 2</a></h4>
-                            <h6>U/A</h6>
-                            <h6>Hindi</h6>
-                            <div class="product-rating mb-2">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star mr-0"></i>
-                            </div>
-                    
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-3">
-                        <div class="card-wrapper mb-4">
-                            <div class="card-img"><img src="assets/2018.jpg" alt="..."></div>
-                            <div class="card-body">
-                                <div>
-                                    <a [routerLink]="['/movie-details/650dd884aa6c5aa8ee2a0129']"><i class="bg-white p-3 rounded-circle ti-shopping-cart font-weight-600"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-center">
-                            <h4 class="h5 mb-2"><a href="#" class="text-secondary">2018</a></h4>
-                            <h6>U/A</h6>
-                            <h6>Malayalam</h6>
-                            <div class="product-rating mb-2">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star mr-0"></i>
-                            </div>
-                      
                         </div>
                     </div>
                 </div>
