@@ -1,0 +1,63 @@
+	
+		<div class="wrapper d-flex align-items-stretch">
+			<nav id="sidebar">
+				<div class="custom-menu">
+					<button type="button" id="sidebarCollapse" class="btn btn-primary">
+	          <i class="fa fa-bars"></i>
+	          <span class="sr-only">Toggle Menu</span>
+	        </button>
+        </div>
+	  		<h1><a [routerLink]="['/']" class="logo">Show WIth Us</a></h1>
+        <ul class="list-unstyled components mb-5">
+          <li class="active">
+              <a [routerLink]="['/my-dashboard']"><span class="fa fa-user mr-3"></span> Dashboard</a>
+          </li>
+          <li>
+            <a href="#"><span class="fa fa-sticky-note mr-3"></span> My Booking</a>
+          </li>
+          <li>
+            <a href="#"><span class="fas fa-star mr-3"></span> Rate </a>
+          </li>
+          <li>
+            <a (click)="logout()"><span class="fas fa-sign-out-alt mr-3"></span> Logout</a>
+          </li>
+        </ul>
+
+    	</nav>
+
+        <!-- Page Content  -->
+      <div id="content" class="p-4 p-md-5 pt-5">
+        
+
+        <section class="container" *ngFor="let item of userData; let i = index">
+            <h1></h1>
+              <div class="row" >
+                <article class="card fl-right">
+                  <section class="date">
+                    <time datetime="23th feb">
+                      <span>{{ item.date | date: 'dd' }}</span><br><span>{{ item.date | date: 'MMM' }}</span>
+                    </time>
+                  </section>
+                  <section class="card-cont">
+                    <!-- <small>dj khaled</small> --><br>
+                    <h3>{{ item.moviename }}</h3>
+                    <div class="even-date">
+                     <i class="fa fa-calendar">&nbsp;</i>
+                     <time>
+                       <span>{{ item.date | date: 'EEEE d MMMM y' }}</span>
+                       <span>{{ item.time}}</span>
+                     </time>
+                    </div>
+                    <div class="even-info">
+                      <i class="fa fa-map-marker"></i>
+                      <p>
+                        nexen square for people australia, sydney
+                      </p>
+                    </div>
+                    <a (click)="cancelTicket(item._id)" *ngIf="!isDateOlderThanToday(item.date)">Cancel tickets</a><br>  
+                    <button class="btn btn-primary" *ngIf="isDateOlderThanToday(item.date)">Add Review</button>
+                  </section>
+                </article>
+              </div>
+            </section>
+		</div>

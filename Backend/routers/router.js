@@ -179,10 +179,10 @@ router.delete('/delete-movie/:id',verifytoken, (req, res) => {
 
 // API Endpoint to Book a Ticket
 router.post('/bookTicket',verifytoken, (req, res) => {
-  const { moviename, date, tickets, amount, email } = req.body;
+  const { moviename, date, tickets, amount, email, time } = req.body;
 
   // Save booking to MongoDB
-  const newBooking = new bookingData({ moviename, date, tickets, amount, email });
+  const newBooking = new bookingData({ moviename, date, tickets, amount, email, time });
   newBooking.save()
   .then(() => {
     // Send confirmation email
@@ -219,6 +219,88 @@ const sendConfirmationEmail = (email, tickets) => {
       console.log('Email sent:', info.response);
     }
   });
-
 }
+
+// Get booking details by email - customer
+router.get('/get-booking-details/:email',verifytoken, async(req, res) => {
+  const email = req.params.email;
+
+  try {
+    const data = await bookingData.find({ email });
+
+    if (!data || data.length === 0) {
+      return res.status(404).json({ error: 'No data found for the provided email' });
+    }
+
+    res.json(data);
+  } catch (err) {
+    console.error('Error retrieving data', err);
+    res.status(500).json({ error: 'Error retrieving data' });
+  }
+});
+
+// get bookings by id - customer
+router.get('/get-bookings/:id',verifytoken, (req, res) => {
+  const id = req.params.id;
+
+  bookingData.findById(id)
+    .then((data) => {
+      if (!data) {
+        return res.status(404).json({ error: 'Data not found' });
+      }
+      res.json(data);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json({ error: 'Error retrieving data' });
+    });
+});
+
+//   Cancel tickets - Customer
+router.delete('/cancel-tickets/:id',verifytoken, (req, res) => {
+  const id = req.params.id;
+
+  bookingData.findByIdAndRemove(id)
+    .then((removedData) => {
+      if (removedData) {
+        console.log('Ticket cancelled successfully:', removedData);
+        res.json({ message: 'Ticket cancelled successfully' });
+      } else {
+        res.status(404).json({ error: 'Ticket not found' });
+      }
+    })
+    .catch((err) => {
+      console.error('Error cancelling movie:', err);
+      res.status(500).json({ error: 'Error cancelling movie' });
+    });
+});
+
+router.get('/soldseats/:movieId', async (req, res) => {
+  try {
+    const movieId = req.params.movieId;
+
+    // Fetch the list of sold seats for the specified movie
+    const soldSeats = await getSoldSeatsForMovie(movieId);
+
+    res.status(200).json(soldSeats);
+  } catch (error) {
+    console.error('Error fetching sold seats:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Function to get sold seats for a specific movie
+async function getSoldSeatsForMovie(movieId) {
+  try {
+    // Assuming you have a 'bookings' collection in your MongoDB
+    // You can customize this query based on your actual schema
+    const soldSeats = await bookingData.find({ movieId }).distinct('seat_number');
+
+    return soldSeats;
+  } catch (error) {
+    console.error('Error fetching sold seats:', error);
+    return []; // Return an empty array in case of an error
+  }
+}
+
 module.exports = router

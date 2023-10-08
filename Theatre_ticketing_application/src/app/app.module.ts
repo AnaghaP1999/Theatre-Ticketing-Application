@@ -18,6 +18,12 @@ import { BookticketsComponent } from './booktickets/booktickets.component';
 import { CustomerService } from './customer.service';
 import { AddmovieComponent } from './addmovie/addmovie.component';
 import { EditmovieComponent } from './editmovie/editmovie.component';
+import { MybookingsComponent } from './mybookings/mybookings.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatFormFieldModule } from '@angular/material/form-field'; // Import MatFormFieldModule
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -30,14 +36,20 @@ import { EditmovieComponent } from './editmovie/editmovie.component';
     MoviepageComponent,
     BookticketsComponent,
     AddmovieComponent,
-    EditmovieComponent
+    EditmovieComponent,
+    MybookingsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule, // Add MatFormFieldModule to imports
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [LoginService, CustomerService, {
     provide:HTTP_INTERCEPTORS,

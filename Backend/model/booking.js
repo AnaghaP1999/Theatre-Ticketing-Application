@@ -8,14 +8,14 @@ const Schema = mongoose.Schema({
         type: String, required: true 
     },
     tickets:{
-        type:Number, required: true                                                       
+        type: [], required: true                                                       
      },
      amount:{
         type:String, required: true                                                       
     },
-    // time:{
-    //     type:String, required: true                                                       
-    // },
+    time:{
+        type:String, required: true                                                       
+    },
     email:{
         type:String, required: true                                                       
     }

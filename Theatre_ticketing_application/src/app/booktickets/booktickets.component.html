@@ -34,30 +34,29 @@
                         <h2 class="title">Book Tickets</h2>
                         <form (ngSubmit)="bookTicket()">
                             <div class="row row-space">
-                                <div class="col-2">
+                                <div>
                                     <div class="input-group">
                                         Movie
-                                        <input class="input--style-4" type="text" placeholder="Movie Name" name="moviename" [(ngModel)]="booking.moviename">
+                                        <input class="input--style-5" type="text" placeholder="Movie Name" name="moviename" [(ngModel)]="movieName">
                                     </div>
                                 </div>
-                                <div class="col-2">
-                                    <div class="input-group">
-                                        Number of Ticket
-                                        <input class="input--style-4" type="text" placeholder="Enter Number of tickets" name="tickets" [(ngModel)]="booking.tickets">
-                                    </div>
-                                </div>
+                               
                             </div>
                             <div class="row row-space">
                                 <div class="col-2">
                                     <div class="input-group">                           
-                                        <div class="input-group-icon">
-                                            Show Date<input type="date" name="date" [(ngModel)]="booking.date">
+                                        <div class="input-group-icon"><br>
+                                            <mat-form-field>
+                                                <input matInput [matDatepicker]="picker" placeholder="Select a date" [matDatepickerFilter]="dateFilter" (dateChange)="onDateSelected($event)" [(ngModel)]="date" name="date">
+                                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                                <mat-datepicker #picker></mat-datepicker>
+                                              </mat-form-field>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="input-group">
-                                        Amount<input class="input--style-4" type="text" placeholder="Total Amount" name="amount" [(ngModel)]="booking.amount">
+                                        Amount<input class="input--style-5" type="text" placeholder="Total Amount" name="amount" [(ngModel)]="totalAmount">
                                     </div>
                                 </div>
                             </div>
@@ -65,12 +64,34 @@
                                 <div class="col-2">
                                     <div class="input-group">
                                        Email
-                                        <input class="input--style-4" type="email" placeholder="Enter your MailID" name="email" [(ngModel)]="booking.email">
+                                        <input class="input--style-4" type="email" placeholder="Enter your MailID" name="email" [(ngModel)]="userData">
                                     </div>
                                 </div>
-                               
+                                <div class="col-2">Time Slot
+                                    <div class="input-group">
+                                        <select class="form-select" id="time" name="time" [(ngModel)]="time" required>
+                                            <option>09:00 AM</option>
+                                            <option>12:00 PM</option>
+                                            <option>6:00 PM</option>
+                                            <option>9:00 PM</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
-                           
+                            <div class="seat-selection">
+                                <div class="row">
+                                  <div class="seat-row" *ngFor="let rowIndex of generateRowIndices()">
+                                    <div class="seat-column" *ngFor="let seatNumber of generateSeatNumbers(rowIndex)">
+                                      <div class="seat"
+                                        [class.selected]="isSeatSelected('E' + seatNumber)"
+                                        [class.sold]="isSeatBooked('E' + seatNumber)"
+                                        [class.disabled]="isSeatDisabled('E' + seatNumber)"
+                                        (click)="toggleSeat('E' + seatNumber)">E{{ seatNumber }}
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
                             <div class="p-t-15">
                                 <button class="btn btn-primary btn-lg" type="submit"> Book Now </button>
                             </div>
