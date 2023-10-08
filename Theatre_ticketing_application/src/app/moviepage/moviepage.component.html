@@ -13,13 +13,13 @@
               <a [routerLink]="['/my-dashboard']"><span class="fa fa-user mr-3"></span> Dashboard</a>
           </li>
           <li>
-            <a href="#"><span class="fa fa-sticky-note mr-3"></span> My Booking</a>
+            <a [routerLink]="['/my-bookings']"><span class="fa fa-sticky-note mr-3"></span> My Booking</a>
           </li>
           <li>
             <a href="#"><span class="fas fa-star mr-3"></span> Rate </a>
           </li>
           <li>
-            <a ><span class="fas fa-sign-out-alt mr-3"></span> Logout</a>
+            <a (click)="logout()"><span class="fas fa-sign-out-alt mr-3"></span> Logout</a>
           </li>
         </ul>
 

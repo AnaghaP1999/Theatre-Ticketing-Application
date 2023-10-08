@@ -38,4 +38,8 @@ export class EditmovieComponent implements OnInit {
     });
   }
 
+  // Logout
+  logout(): void {
+    this.service.logout();
+  }
 }

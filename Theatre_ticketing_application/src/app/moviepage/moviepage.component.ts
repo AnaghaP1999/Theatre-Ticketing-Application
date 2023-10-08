@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CustomerService } from '../customer.service';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-moviepage',
@@ -9,7 +10,7 @@ import { CustomerService } from '../customer.service';
 })
 export class MoviepageComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private service: CustomerService) {}
+  constructor(private route: ActivatedRoute, private service: CustomerService, private loginservice: LoginService) {}
   movieData: any = {};
   SelectedImage: string | ArrayBuffer | null = null;
   private id: string | null = null;
@@ -29,5 +30,10 @@ export class MoviepageComponent implements OnInit {
         }
       });
     });
+  }
+
+  // logout
+  logout(): void {
+    this.loginservice.logout();
   }
 }

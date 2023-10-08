@@ -4,6 +4,7 @@ import { CustomerService } from '../customer.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-booktickets',
@@ -34,7 +35,7 @@ export class BookticketsComponent implements OnInit {
   totalAmount: number = 0;
 
   constructor(private http: HttpClient, private customerservice: CustomerService, private route: ActivatedRoute,
-    private router: Router) {}
+    private router: Router, private service: LoginService) {}
 
   ngOnInit(): void {
     
@@ -159,4 +160,8 @@ export class BookticketsComponent implements OnInit {
     return numberOfSelectedSeats * this.amount;
   }
 
+  // logout
+  logout(): void {
+    this.service.logout();
+  }
 }
