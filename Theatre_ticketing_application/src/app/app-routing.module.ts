@@ -11,18 +11,20 @@ import { AddmovieComponent } from './addmovie/addmovie.component';
 import { EditmovieComponent } from './editmovie/editmovie.component';
 import { MybookingsComponent } from './mybookings/mybookings.component';
 import { MyRatingsComponent } from './my-ratings/my-ratings.component';
+import { userGuard } from './user.guard';
+import { adminGuard } from './admin.guard';
 
 const routes: Routes = [{path:'',component:HomeComponent},
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
-  {path:'admin-dashboard',component:AdmindashboardComponent},
-  {path:'my-dashboard',component:CustomerdashboardComponent},
-  {path:'movie-details/:id',component:MoviepageComponent},
-  {path:'book-tickets/:id',component:BookticketsComponent},
-  {path:'add-movie',component:AddmovieComponent},
-  {path:'edit-movie/:id',component:EditmovieComponent},
-  {path:'my-bookings',component:MybookingsComponent},
-  {path:'my-rating/:id',component:MyRatingsComponent}
+  {path:'admin-dashboard',component:AdmindashboardComponent, canActivate:[adminGuard]},
+  {path:'my-dashboard',component:CustomerdashboardComponent, canActivate:[userGuard]},
+  {path:'movie-details/:id',component:MoviepageComponent, canActivate:[userGuard]},
+  {path:'book-tickets/:id',component:BookticketsComponent, canActivate:[userGuard]},
+  {path:'add-movie',component:AddmovieComponent, canActivate:[adminGuard]},
+  {path:'edit-movie/:id',component:EditmovieComponent, canActivate:[adminGuard]},
+  {path:'my-bookings',component:MybookingsComponent, canActivate:[userGuard]},
+  {path:'my-rating/:id',component:MyRatingsComponent, canActivate:[userGuard]}
 ];
 
 @NgModule({

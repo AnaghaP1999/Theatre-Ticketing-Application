@@ -278,8 +278,6 @@ router.delete('/cancel-tickets/:id',verifytoken, (req, res) => {
 router.get('/soldseats/:movieId', async (req, res) => {
   try {
     const movieId = req.params.movieId;
-
-    // Fetch the list of sold seats for the specified movie
     const soldSeats = await getSoldSeatsForMovie(movieId);
 
     res.status(200).json(soldSeats);
@@ -292,19 +290,17 @@ router.get('/soldseats/:movieId', async (req, res) => {
 // Function to get sold seats for a specific movie
 async function getSoldSeatsForMovie(movieId) {
   try {
-    // Assuming you have a 'bookings' collection in your MongoDB
-    // You can customize this query based on your actual schema
     const soldSeats = await bookingData.find({ movieId }).distinct('seat_number');
 
     return soldSeats;
   } catch (error) {
     console.error('Error fetching sold seats:', error);
-    return []; // Return an empty array in case of an error
+    return []; 
   }
 }
 
 // Add Movie Rating
-router.post('/movie-rating/:movieId', async (req, res) => {
+router.post('/movie-rating/:movieId', verifytoken, async (req, res) => {
   const { user, reviewText, starRating } = req.body;
   const { movieId } = req.params;
 

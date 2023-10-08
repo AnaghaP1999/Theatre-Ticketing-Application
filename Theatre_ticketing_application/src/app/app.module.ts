@@ -25,6 +25,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MyRatingsComponent } from './my-ratings/my-ratings.component';
+import { adminGuard } from './admin.guard';
+import { userGuard } from './user.guard';
 
 @NgModule({
   declarations: [
