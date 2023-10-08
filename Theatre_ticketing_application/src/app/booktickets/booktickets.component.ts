@@ -85,7 +85,8 @@ export class BookticketsComponent implements OnInit {
       tickets:this.selectedSeats,
       amount:this.totalAmount,
       time:this.time,
-      email: this.userData
+      email: this.userData,
+      movieId: this.Id
     }
     this.customerservice.bookTicket(this.booking).subscribe(
       (response) => {

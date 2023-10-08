@@ -29,46 +29,6 @@
                         <form (ngSubmit)="updateMovie()">
                             <div class="row row-space">
                                 <div class="col-2">
-                                    <div class="input-group">
-                                        Movie
-                                        <input class="input--style-4" type="text" placeholder="Movie Name" name="moviename" [(ngModel)]="movieData.moviename">
-                                    </div>
-                                </div>
-                                <div class="col-2">
-                                    <div class="input-group">
-                                        Number of Seats
-                                        <input class="input--style-4" type="text" placeholder="Enter Number of Seats" name="seats" [(ngModel)]="movieData.seats">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row row-space">
-                                <div class="col-2">
-                                    <div class="input-group">                           
-                                        <div class="input-group-icon">
-                                            Category<input class="input--style-4" type="text" placeholder="Enter the Movie Category" name="category" [(ngModel)]="movieData.category">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-2">
-                                    <div class="input-group">
-                                        Language<input class="input--style-4" type="text" placeholder="Movie Language" name="language" [(ngModel)]="movieData.language">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row row-space">
-                                <div class="col-2">  Cast
-                                    <div class="input-group">
-                                        <textarea class="input--style-4" placeholder="Cast Details" name="cast" [(ngModel)]="movieData.cast"></textarea>
-                                    </div>
-                                </div>  
-                                <div class="col-2">  Movie Description
-                                    <div class="input-group">
-                                        <textarea class="input--style-4" placeholder="Movie Description" name="description" [(ngModel)]="movieData.description"></textarea>
-                                    </div>
-                                </div>  
-                            </div>
-                            <div class="row row-space">
-                                <div class="col-2">
                                     <div class="input-group">                           
                                         <div class="input-group-icon">
                                             Ticket Rate<input class="input--style-4" type="text" placeholder="Ticket Rate" name="ticket_rate" [(ngModel)]="movieData.ticket_rate">
@@ -77,7 +37,7 @@
                                 </div>
                                 <div class="col-2">
                                     <div class="input-group">
-                                        Upload Image<input class="btn btn-lg" type="file" placeholder="Upload Image" name="image">
+                                        Time Slots<input class="input--style-4" type="text" name="timeSlots" [(ngModel)]="timeSlots">
                                     </div>
                                 </div>
                             </div>

@@ -31,6 +31,8 @@ export class AddmovieComponent implements OnInit {
       formData.append('ticket_rate', form.value.ticket_rate);
       formData.append('seats', form.value.seats);
       formData.append('image', this.selectedImage);
+      const timeSlotsArray: string[] = form.value.timeSlots.split(',').map((slot: string) => slot.trim());
+      timeSlotsArray.forEach(slot => formData.append('timeSlots[]', slot));
   
       this.adminservice.addMovie(formData).subscribe(
         (response) => {

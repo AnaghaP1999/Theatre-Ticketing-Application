@@ -44,4 +44,15 @@ export class CustomerService {
     return this.http.get<string[]>(`http://localhost:3000/api/soldseats/${movieId}`);
   }
 
+  // Add Rating - Customer
+  submitRating(movieId: string, user: string, reviewText: string, starRating: number): Observable<any> {
+    const ratingData = {
+      user,
+      reviewText,
+      starRating,
+    };
+
+    return this.http.post(`http://localhost:3000/api/movie-rating/${movieId}`, ratingData, { responseType: 'text' });
+  }
+
 }

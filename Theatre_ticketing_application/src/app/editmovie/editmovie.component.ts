@@ -11,6 +11,7 @@ import { AdminService } from '../admin.service';
 export class EditmovieComponent implements OnInit {
 
   movieData: any = {};
+  timeSlots : any;
 
   constructor(private router: Router, private route: ActivatedRoute, private service: LoginService, private adminservice: AdminService) {}
 
@@ -21,6 +22,7 @@ export class EditmovieComponent implements OnInit {
         this.adminservice.getDataById(id).subscribe(
           response => {
             this.movieData = response;
+            this.timeSlots = response.timeSlots.join(', ');
           },
           error => {
             console.error('Error fetching movie details:', error);
@@ -33,7 +35,12 @@ export class EditmovieComponent implements OnInit {
 
    // update a requirement - Admin
    updateMovie() {
-    this.adminservice.updateMovie(this.movieData).subscribe(() => {
+    const updatedMovieData = {
+      ticket_rate: this.movieData.ticket_rate,
+      timeSlots: this.timeSlots.split(',').map((slot: string) => slot.trim())
+    };
+    
+    this.adminservice.updateMovie(this.movieData._id, updatedMovieData).subscribe(() => {
       this.router.navigate(['/admin-dashboard']);
     });
   }

@@ -55,7 +55,7 @@
                       </p>
                     </div>
                     <a (click)="cancelTicket(item._id)" *ngIf="!isDateOlderThanToday(item.date)">Cancel tickets</a><br>  
-                    <button class="btn btn-primary" *ngIf="isDateOlderThanToday(item.date)">Add Review</button>
+                    <button class="btn btn-primary" [routerLink]="['/my-rating',item.movieId]" *ngIf="isDateOlderThanToday(item.date) && (item.rating == '')">Add Review</button>
                   </section>
                 </article>
               </div>

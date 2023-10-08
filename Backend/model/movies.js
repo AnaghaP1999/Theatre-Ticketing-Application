@@ -26,7 +26,15 @@ const Schema = mongoose.Schema({
         data: Buffer,
         contentType : String
         // required: true 
-    }
+    },
+    timeSlots:{
+        type: [], required: true                                                       
+     },
+     rating: {
+        user: String,
+        reviewText: String,
+        starRating: Number,
+      }
 });
 
 const movieData = mongoose.model('movies',Schema);

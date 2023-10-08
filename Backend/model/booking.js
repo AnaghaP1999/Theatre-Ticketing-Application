@@ -18,6 +18,9 @@ const Schema = mongoose.Schema({
     },
     email:{
         type:String, required: true                                                       
+    },
+    movieId:{
+        type:String, required: true                                                       
     }
 });
 

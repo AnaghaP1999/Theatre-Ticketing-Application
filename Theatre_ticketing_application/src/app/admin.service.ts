@@ -27,8 +27,8 @@ export class AdminService {
   }
 
   //  update requirement API - Admin
-  updateMovie(movies: { _id: string; moviename: string; image: string; language: string; category: string; cast:string; description: string; ticket_rate: string; seats: Number; }): Observable<any> {
-    return this.http.put<any>(`http://localhost:3000/api/update-movie/${movies._id}`, movies);
+  updateMovie(movieId: string, updatedData: any): Observable<any> {
+    return this.http.put<any>(`http://localhost:3000/api/update-movie/${movieId}`, updatedData);
   }
 
   //  delete movie API - Admin

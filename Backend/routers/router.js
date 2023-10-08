@@ -121,11 +121,11 @@ router.get('/get-movie-details/:id',verifytoken, (req, res) => {
 router.post('/addmovie', verifytoken, upload.single('image'), async (req, res) => {
   try {
     const {
-      moviename, language, category, cast, description, ticket_rate, seats
+      moviename, language, category, cast, description, ticket_rate, seats, timeSlots
     } = req.body;
 
     const movie = new movieData({
-      moviename, language, category, cast, description, ticket_rate, seats,
+      moviename, language, category, cast, description, ticket_rate, seats, timeSlots,
       image : {
         data : Buffer.from(req.file.buffer),
         contentType : req.file.mimetype
@@ -144,11 +144,11 @@ router.post('/addmovie', verifytoken, upload.single('image'), async (req, res) =
 });
 
 // Update movie details - Admin
-router.put('/update-movie/:id',verifytoken, (req, res) => {
+router.put('/update-movie/:id', verifytoken, (req, res) => {
   const id = req.params.id;
   const updatedData = req.body;
 
-  movieData.findByIdAndUpdate(id, updatedData, { new: true })
+  movieData.findByIdAndUpdate(id, { $set: updatedData }, { new: true })
     .then((updated) => {
       res.json(updated);
     })
@@ -179,10 +179,10 @@ router.delete('/delete-movie/:id',verifytoken, (req, res) => {
 
 // API Endpoint to Book a Ticket
 router.post('/bookTicket',verifytoken, (req, res) => {
-  const { moviename, date, tickets, amount, email, time } = req.body;
+  const { moviename, date, tickets, amount, email, time, movieId } = req.body;
 
   // Save booking to MongoDB
-  const newBooking = new bookingData({ moviename, date, tickets, amount, email, time });
+  const newBooking = new bookingData({ moviename, date, tickets, amount, email, time, movieId });
   newBooking.save()
   .then(() => {
     // Send confirmation email
@@ -302,5 +302,38 @@ async function getSoldSeatsForMovie(movieId) {
     return []; // Return an empty array in case of an error
   }
 }
+
+// Add Movie Rating
+router.post('/movie-rating/:movieId', async (req, res) => {
+  const { user, reviewText, starRating } = req.body;
+  const { movieId } = req.params;
+
+  try {
+    const movie = await movieData.findByIdAndUpdate(
+      movieId,
+      {
+        $set: {
+          rating: {
+            user: user,
+            reviewText,
+            starRating,
+          },
+        },
+      },
+      { new: true } 
+    );
+
+    if (!movie) {
+      res.status(404).send('Movie not found');
+      return;
+    }
+
+    res.status(200).send('Rating updated successfully');
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error updating rating');
+  }
+});
+
 
 module.exports = router
