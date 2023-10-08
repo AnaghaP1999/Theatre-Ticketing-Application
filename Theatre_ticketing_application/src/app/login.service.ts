@@ -12,14 +12,15 @@ export class LoginService {
   constructor(private http:HttpClient, private router:Router) { }
 
   private isLoggedIn = false;
+  server_address: string = 'http://localhost:3000/api';
 
   login(user:any):Observable<any> {
-    return this.http.post(`http://localhost:3000/api/login`, user);
+    return this.http.post(`${this.server_address}/login`, user);
   }
 
   // signup
   signup(user:any):Observable<any>{
-    return this.http.post(`http://localhost:3000/api/signup`, user);
+    return this.http.post(`${this.server_address}/signup`, user);
   }
 
   // logout

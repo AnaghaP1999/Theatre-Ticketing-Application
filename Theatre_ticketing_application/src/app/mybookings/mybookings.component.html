@@ -16,9 +16,6 @@
             <a [routerLink]="['/my-bookings']"><span class="fa fa-sticky-note mr-3"></span> My Booking</a>
           </li>
           <li>
-            <a href="#"><span class="fas fa-star mr-3"></span> Rate </a>
-          </li>
-          <li>
             <a (click)="logout()"><span class="fas fa-sign-out-alt mr-3"></span> Logout</a>
           </li>
         </ul>
@@ -48,12 +45,7 @@
                        <span>{{ item.time}}</span>
                      </time>
                     </div>
-                    <div class="even-info">
-                      <i class="fa fa-map-marker"></i>
-                      <p>
-                        nexen square for people australia, sydney
-                      </p>
-                    </div>
+                   
                     <a (click)="cancelTicket(item._id)" *ngIf="!isDateOlderThanToday(item.date)">Cancel tickets</a><br>  
                     <button class="btn btn-primary" [routerLink]="['/my-rating',item.movieId]" *ngIf="isDateOlderThanToday(item.date)">Add Review</button>
                   </section>

@@ -33,6 +33,7 @@ export class BookticketsComponent implements OnInit {
   totalSeats: any;
   columnsPerRow: number = 6;
   totalAmount: number = 0;
+  timeSlots: any;
 
   constructor(private http: HttpClient, private customerservice: CustomerService, private route: ActivatedRoute,
     private router: Router, private service: LoginService) {}
@@ -70,6 +71,7 @@ export class BookticketsComponent implements OnInit {
         this.amount = response.ticket_rate;
         this.userData = localStorage.getItem('user');
         this.totalSeats = response.seats;
+        this.timeSlots = response.timeSlots;
         this.totalAmount = this.calculateTotalAmount();
       },
       (error) => {

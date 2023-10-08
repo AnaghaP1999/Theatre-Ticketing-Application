@@ -15,9 +15,6 @@
     <a [routerLink]="['/my-bookings']"><span class="fa fa-sticky-note mr-3"></span> My Booking</a>
   </li>
   <li>
-    <a href="#"><span class="fas fa-star mr-3"></span> Rate </a>
-  </li>
-  <li>
     <a (click)="logout()"><span class="fas fa-sign-out-alt mr-3"></span> Logout</a>
   </li>
 </ul>
@@ -69,10 +66,11 @@
                                 <div class="col-2">Time Slot
                                     <div class="input-group">
                                         <select class="form-select" id="time" name="time" [(ngModel)]="time" required>
-                                            <option>09:00 AM</option>
-                                            <option>12:00 PM</option>
+                                            <option>Select Time</option>
+                                            <option *ngFor="let item of timeSlots; let i = index">{{ item }}</option>
+                                            <!-- <option>12:00 PM</option>
                                             <option>6:00 PM</option>
-                                            <option>9:00 PM</option>
+                                            <option>9:00 PM</option> -->
                                         </select>
                                     </div>
                                 </div>
