@@ -30,11 +30,13 @@ const Schema = mongoose.Schema({
     timeSlots:{
         type: [], required: true                                                       
      },
-     rating: {
-        user: String,
-        reviewText: String,
-        starRating: Number,
-      }
+    rating: [
+        {
+            user: String,
+            reviewText: String,
+            starRating: Number,
+        },
+    ]
 });
 
 const movieData = mongoose.model('movies',Schema);

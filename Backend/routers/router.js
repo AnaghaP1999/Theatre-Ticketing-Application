@@ -312,7 +312,7 @@ router.post('/movie-rating/:movieId', async (req, res) => {
     const movie = await movieData.findByIdAndUpdate(
       movieId,
       {
-        $set: {
+        $push: {
           rating: {
             user: user,
             reviewText,
@@ -320,7 +320,7 @@ router.post('/movie-rating/:movieId', async (req, res) => {
           },
         },
       },
-      { new: true } 
+      { new: true }
     );
 
     if (!movie) {
@@ -334,6 +334,7 @@ router.post('/movie-rating/:movieId', async (req, res) => {
     res.status(500).send('Error updating rating');
   }
 });
+
 
 
 module.exports = router
